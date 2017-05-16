@@ -1,0 +1,2 @@
+./nc2png [netcdf file] [output filename .png]
+
