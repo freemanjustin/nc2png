@@ -143,8 +143,196 @@ void init_cmaps_from_data(e *E, colormap cm){
     init_cmap_from_data( cmap_artmap, &E->cmap);
     return;
   }
-  if(cm == davies){
-    init_cmap_from_data( cmap_davies, &E->cmap);
+  if(cm == artmap_starry_night){
+    init_cmap_from_data( cmap_artmap_starry_night, &E->cmap );
+    return;
+  }
+  if(cm == artmap_pauldavies1){
+    init_cmap_from_data( cmap_artmap_pauldavies1, &E->cmap );
+    return;
+  }
+  if(cm == artmap_pauldavies2){
+    init_cmap_from_data( cmap_artmap_pauldavies2, &E->cmap );
+    return;
+  }
+  if(cm == artmap_pauldavies3){
+    init_cmap_from_data( cmap_artmap_pauldavies3, &E->cmap );
+    return;
+  }
+  if(cm == artmap_pauldavies4){
+    init_cmap_from_data( cmap_artmap_pauldavies4, &E->cmap );
+    return;
+  }
+  if(cm == artmap_pauldavies5){
+    init_cmap_from_data( cmap_artmap_pauldavies5, &E->cmap );
+    return;
+  }
+  if(cm == artmap_pauldavies6){
+    init_cmap_from_data( cmap_artmap_pauldavies6, &E->cmap );
+    return;
+  }
+  if(cm == artmap_pauldavies7){
+    init_cmap_from_data( cmap_artmap_pauldavies7, &E->cmap );
+    return;
+  }
+  if(cm == artmap_pauldavies8){
+    init_cmap_from_data( cmap_artmap_pauldavies8, &E->cmap );
+    return;
+  }
+  if(cm == artmap_jacksonpollock1){
+    init_cmap_from_data( cmap_artmap_jacksonpollock1, &E->cmap );
+    return;
+  }
+  if(cm == artmap_jacksonpollock2){
+    init_cmap_from_data( cmap_artmap_jacksonpollock2, &E->cmap );
+    return;
+  }
+  if(cm == artmap_jacksonpollock3){
+    init_cmap_from_data( cmap_artmap_jacksonpollock3, &E->cmap );
+    return;
+  }
+  if(cm == artmap_edwardhopper1){
+    init_cmap_from_data( cmap_artmap_edwardhopper1, &E->cmap );
+    return;
+  }
+  if(cm == artmap_edwardhopper2){
+    init_cmap_from_data( cmap_artmap_edwardhopper2, &E->cmap );
+    return;
+  }
+  if(cm == artmap_jeffwall1){
+    init_cmap_from_data( cmap_artmap_jeffwall1, &E->cmap );
+    return;
+  }
+  if(cm == artmap_danflavin1){
+    init_cmap_from_data( cmap_artmap_danflavin1, &E->cmap );
+    return;
+  }
+  if(cm == artmap_danflavin2){
+    init_cmap_from_data( cmap_artmap_danflavin2, &E->cmap );
+    return;
+  }
+  if(cm == artmap_gerhardrichter1){
+    init_cmap_from_data( cmap_artmap_gerhardrichter1, &E->cmap );
+    return;
+  }
+  if(cm == artmap_warhol1){
+    init_cmap_from_data( cmap_artmap_warhol1, &E->cmap );
+    return;
+  }
+  if(cm == artmap_warhol2){
+    init_cmap_from_data( cmap_artmap_warhol2, &E->cmap );
+    return;
+  }
+  if(cm == artmap_georgebyrne1){
+    init_cmap_from_data( cmap_artmap_georgebyrne1, &E->cmap );
+    return;
+  }
+  if(cm == artmap_georgebyrne2){
+    init_cmap_from_data( cmap_artmap_georgebyrne2, &E->cmap );
+    return;
+  }
+  if(cm==artmap_arthurboyd1){
+  init_cmap_from_data( cmap_artmap_arthurboyd1, &E->cmap );
+  return;
+  }
+  if(cm==artmap_charlesdemuth1){
+    init_cmap_from_data( cmap_artmap_charlesdemuth1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_claudemonet1){
+    init_cmap_from_data( cmap_artmap_claudemonet1,&E->cmap );
+    return;
+  }
+  if(cm==artmap_ellswothkelly1){
+   init_cmap_from_data( cmap_artmap_ellswothkelly1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_franzkline1){
+    init_cmap_from_data( cmap_artmap_franzkline1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_jasperjohns1){
+    init_cmap_from_data( cmap_artmap_jasperjohns1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_joanmiro1){
+    init_cmap_from_data( cmap_artmap_joanmiro1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_johnolsen1){
+    init_cmap_from_data( cmap_artmap_johnolsen1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_johnolsen2){
+    init_cmap_from_data( cmap_artmap_johnolsen2, &E->cmap );
+    return;
+  }
+  if(cm==artmap_leilajeffreys1){
+    init_cmap_from_data( cmap_artmap_leilajeffreys1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_leilajeffreys2){
+    init_cmap_from_data( cmap_artmap_leilajeffreys2, &E->cmap );
+    return;
+  }
+  if(cm==artmap_maxernst1){
+    init_cmap_from_data( cmap_artmap_maxernst1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_maxernst2){
+    init_cmap_from_data( cmap_artmap_maxernst2, &E->cmap );
+    return;
+  }
+  if(cm==artmap_maxernst3){
+    init_cmap_from_data( cmap_artmap_maxernst3, &E->cmap );
+    return;
+  }
+  if(cm==artmap_maxernst4){
+    init_cmap_from_data( cmap_artmap_maxernst4, &E->cmap );
+    return;
+  }
+  if(cm==artmap_pauldelvaux1){
+    init_cmap_from_data( cmap_artmap_pauldelvaux1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_pauldelvaux2){
+    init_cmap_from_data( cmap_artmap_pauldelvaux2, &E->cmap );
+    return;
+  }
+  if(cm==artmap_pauldelvaux3){
+    init_cmap_from_data( cmap_artmap_pauldelvaux3, &E->cmap );
+    return;
+  }
+  if(cm==artmap_pauldelvaux4){
+    init_cmap_from_data( cmap_artmap_pauldelvaux4, &E->cmap );
+    return;
+  }
+  if(cm==artmap_pauldelvaux5){
+    init_cmap_from_data( cmap_artmap_pauldelvaux5, &E->cmap );
+    return;
+  }
+  if(cm==artmap_renemagritte1){
+    init_cmap_from_data( cmap_artmap_renemagritte1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_renemagritte2){
+    init_cmap_from_data( cmap_artmap_renemagritte2, &E->cmap );
+    return;
+  }
+  if(cm==artmap_rossbleckner1){
+    init_cmap_from_data( cmap_artmap_rossbleckner1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_roylichtenstein1){
+    init_cmap_from_data( cmap_artmap_roylichtenstein1, &E->cmap );
+    return;
+  }
+  if(cm==artmap_roylichtenstein2){
+    init_cmap_from_data( cmap_artmap_roylichtenstein2, &E->cmap );
+    return;
+  }
+  if(cm==artmap_yvestanguy1){
+    init_cmap_from_data( cmap_artmap_yvestanguy1, &E->cmap );
     return;
   }
 }

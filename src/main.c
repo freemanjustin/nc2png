@@ -48,9 +48,9 @@ int main(int argc,char **argv)
   //sprintf(E->lon_name,"xt_ocean");
   //sprintf(E->field_name,"eta_t");
 
-  sprintf(E->lat_name,"yt_ocean");
-  sprintf(E->lon_name,"xt_ocean");
-  sprintf(E->field_name,"sst");
+  sprintf(E->lat_name,"lat");
+  sprintf(E->lon_name,"lon");
+  sprintf(E->field_name,"strs");
 
   read_data(E);
 
@@ -143,6 +143,10 @@ int main(int argc,char **argv)
 		for(i=box.lat_start;i<box.lat_end;i++){
 			for(j=box.lon_start;j<box.lon_end;j++){
 
+        // transform low
+        E->field[i][j] = sqrt(E->field[i][j]);
+        E->field[i][j] = sqrt(E->field[i][j]);
+
 				if(E->field[i][j] > -999.0){
 					if(E->field[i][j] < E->min_val)
 						E->min_val = E->field[i][j];
@@ -154,11 +158,12 @@ int main(int argc,char **argv)
 		}
 
     //E->min_val = 0.0;
-    //E->max_val = 1.0;
+    //E->max_val = 1.5;
 		printf("min_val = %f\nmax_val = %f\n", E->min_val, E->max_val);
 
     //cm = rainbow;
-    draw_map(E, inferno, box);
+    //draw_map(E, inferno, box);
+    draw_map(E,artmap_danflavin1,box);
 
     stbi_write_png(E->fname, E->width, E->height, 4, (const void *)E->image, 0);
     return 0;
