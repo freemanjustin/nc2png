@@ -12,7 +12,9 @@ void read_data(e *E){
     int varid;
     int retval;
 
-		int	i,j;
+	int	i,j;
+
+	float ***tmpField;
 
 
     // open the file
@@ -44,13 +46,16 @@ void read_data(e *E){
     E->lat = malloc(E->nlat*sizeof(double));
     E->lon = malloc(E->nlon*sizeof(double));
     E->field = malloc2d_float(E->nlat, E->nlon);
+	// for 3d data:
+	tmpField = malloc3d_float(8,E->nlat, E->nlon);
+
 
     // read the data
     nc_inq_varid(ncid, E->lat_name, &varid);
-    nc_get_var_float(ncid, varid, &E->lat[0]);
+    nc_get_var_float(ncid, varid, E->lat);
 
     nc_inq_varid(ncid, E->lon_name, &varid);
-    nc_get_var_float(ncid, varid, &E->lon[0]);
+    nc_get_var_float(ncid, varid, E->lon);
 
 		// check the bounds on the longitude array
 		// and set the do_shiftgrid flag as appropriate
@@ -75,9 +80,18 @@ void read_data(e *E){
 
 		// should change this to a get_vara call
 		// to handle 2d, 3d and 4d cases (what about n-dimensional?)
-    if((retval =nc_get_var_float(ncid, varid, &E->field[0][0])))
+    if((retval =nc_get_var_float(ncid, varid, &tmpField[0][0][0])))
         ERR(retval);
 
+
+
+	for(i=0;i<E->nlat;i++){
+		for(j=0;j<E->nlon;j++){
+			E->field[i][j] = tmpField[0][i][j];
+		}
+	}
+
+	free(tmpField);
 		/*
 		// process field to apply scale and offset
 		for(i=0;i<E->nlat;i++){
@@ -98,13 +112,48 @@ void read_data(e *E){
 		*/
 
 
-		/*
-		// remap the longitude array
-		for(i=0;i<E->nlon;i++){
-			//if(E->lon[i] > 180.0 ) E->lon[i] = E->lon[i] - 360.0;
-			E->lon[i] = E->lon[i] - 180.0;
+		// for oceanmaps data:
+		
+		if(E->do_shiftgrid = TRUE){
+			// only works for global grids
+			// need to check against the longitude array for longitudes > 180.0 and wrap around
+			float **shifted = malloc2d_float(E->nlat, E->nlon);
+			int	half = E->nlon/2;
+			
+			// artificial wrap for oceanmaps data
+			E->lon[0] = 0.0;
+			//for(j=0;j<half;j++){
+			//	E->field[0][j] = E->field[E->nlat-1][j];
+			//}
+			// now remap the data array
+			for(i=0;i<E->nlat;i++){
+				for(j=0;j<half;j++){
+					shifted[i][j+half] = E->field[i][j];
+				}
+			}
+			// now remap the data array
+			for(i=0;i<E->nlat;i++){
+				for(j=half;j<E->nlon;j++){
+					shifted[i][j-half] = E->field[i][j];
+				}
+			}
+
+			// remap the longitude array
+			for(i=0;i<E->nlon;i++){
+				//if(E->lon[i] > 180.0 ) E->lon[i] = E->lon[i] - 360.0;
+				E->lon[i] = E->lon[i] - 180.0;
+			}
+			// copy back
+			for(i=0;i<E->nlat;i++){
+				for(j=0;j<E->nlon;j++){
+					E->field[i][j] = shifted[i][j]; 
+				}
+			}
+
+			E->do_shiftgrid = FALSE;
 		}
-		*/
+		
+
 
 		/*
 		// figure out min and max values

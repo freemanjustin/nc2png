@@ -7,6 +7,10 @@
 #include <errno.h>
 #include <math.h>
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
 // netCDF header
 #include "netcdf.h"
 
@@ -229,12 +233,24 @@ typedef struct {
     int     mapWidth;
     int     mapHeight;
 
+    int     start_x;
+    int     end_x;
+    int     start_y;
+    int     end_y;
+    
+
     float   lonDelta;
     float   latDelta;
 
     int     width;
     int     height;
     char*   image;
+
+    int     draw_width;
+    int     draw_height;
+
+    int     tile_width;
+    int     tile_height;
 
     float     r;
     float     g;
@@ -248,10 +264,13 @@ typedef struct {
     float min_val;
     float max_val;
 
+    char  dir_base[1024];
 
     cmap  cmap;
 
     int   do_shiftgrid;
+    int max_zoom;
+    float longitude_offset;
 
 }e;
 
@@ -261,8 +280,22 @@ void jmap_fail( const int, const char*, const char*, const char*, ... );
 // netcdf functions
 void read_data( e* );
 
+
+// map projection functions;
 void geo2pixel(e *E, float latitide, float longitude, int *x, int *y);
 void pixel2geo(e *E, float *latitude, float *longitude, int y, int x) ;
+//void geo2pixel_webMercator(e *E, float latitude, float longitude, int *y, int *x);
+void pixel2geo_webMercator(e *E, float *latitude, float *longitude, int y, int x);
+float y2lat_d(float y);
+float x2lon_d(float x);
+float lat2y_d(float lat);
+float lon2x_d(float lon);
+float y2lat_m(float y);
+float x2lon_m(float x);
+float lat2y_m(float lat);
+float lon2x_m(float lon);
+
+float y2lat_d_j(e*,float y);
 
 //search
 int midpoint(int low, int high);
@@ -277,3 +310,13 @@ void apply_colormap(e *E, cmap colormap, float value, float min_val, float max_v
 
 // draw_map
 void draw_map(e *E, colormap cm, bounding_box box);
+void draw_map_adjusted(e *E, colormap cm, bounding_box box);
+
+
+// utils
+void wipe_tile(e*);
+void mkdirRecursive(const char *path, mode_t mode);
+
+void write_leaflet(e *E);
+
+

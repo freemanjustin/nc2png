@@ -22,7 +22,9 @@ COBJ=	$(CSRC)main.o \
 	$(CSRC)colormap.o \
 	$(CSRC)geo2pixel.o \
 	$(CSRC)search.o \
-	$(CSRC)drawmap.o
+	$(CSRC)drawmap.o \
+	$(CSRC)utils.o \
+	$(CSRC)write_HTML.o
 
 OBJ=	$(COBJ) 
 
